@@ -3,6 +3,17 @@ Ultrahouse3000
 
 Hightech Software for fully automated house from the Mega House Company
 
+Software
+========
+
+Its working with Apache Camel
+
+Routes
+------
+
+![HW3](https://raw.github.com/eddi888/ultrahouse3000/master/src/site/resources/camel-overview.jpg)
+
+
 Hardware
 ========
 

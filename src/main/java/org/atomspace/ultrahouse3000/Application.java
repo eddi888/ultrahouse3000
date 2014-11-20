@@ -16,8 +16,12 @@
 */
 package org.atomspace.ultrahouse3000;
 
+import org.apache.activemq.broker.BrokerService;
 import org.apache.camel.CamelContext;
 import org.apache.camel.component.servlet.CamelHttpTransportServlet;
+import org.apache.camel.impl.DefaultCamelContext;
+import org.apache.camel.spring.boot.CamelContextConfiguration;
+import org.jolokia.http.AgentServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -30,19 +34,48 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 @EnableAutoConfiguration
 public class Application {
-    
+
     @Autowired
     private CamelContext camelContext;
-    
+
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
     }
 
     @Bean
-    public ServletRegistrationBean servletRegistrationBean() {
+    public ServletRegistrationBean camelServlet() {
         ServletRegistrationBean registration = new ServletRegistrationBean(new CamelHttpTransportServlet(), "/camel/*");
         registration.setName("CamelServlet");
         return registration;
+    }
+    
+    @Bean
+    public ServletRegistrationBean jolokiaServlet() {
+        ServletRegistrationBean registration = new ServletRegistrationBean(new AgentServlet(), "/jolokia/*");
+        registration.setName("JolokiaServlet");
+        return registration;
+    }
+
+//    NOT WORKING JET, its SNAPSHOT
+//    @Bean
+//    public CamelContextConfiguration contextConfiguration() {
+//        return (CamelContext camelContext) -> { 
+//            ((DefaultCamelContext)camelContext).setName("camel-ultrahouse3000");
+//        };
+//    }
+
+    
+    @Bean
+    public BrokerService broker() throws Exception {
+        BrokerService broker = new BrokerService();
+        broker.addConnector("tcp://localhost:61616?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600");
+        broker.addConnector("mqtt://localhost:1883?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600");
+        broker.setPersistent(false);
+        broker.setBrokerName("ultrahouse3000-broker");
+
+        // broker.addNetworkConnector("multicast://tcp:");
+
+        return broker;
     }
     
 }
