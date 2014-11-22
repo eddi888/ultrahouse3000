@@ -72,9 +72,11 @@ public class Application {
         broker.addConnector("mqtt://localhost:1883?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600");
         broker.setPersistent(false);
         broker.setBrokerName("ultrahouse3000-broker");
-
+        broker.setEnableStatistics(false);
+        broker.setDedicatedTaskRunner(false);
+        
         // broker.addNetworkConnector("multicast://tcp:");
-
+        
         return broker;
     }
     
