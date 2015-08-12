@@ -37,12 +37,13 @@
         <start-class>org.atomspace.ultrahouse3000.Application</start-class>
         <java.version>1.7</java.version>
 
-        <camel.version>2.15-SNAPSHOT</camel.version>
-        <activemq.version>5.10.0</activemq.version>
+        <camel.version>2.15.2</camel.version>
+        <activemq.version>5.11.2</activemq.version>
         <xbean-spring.version>3.18</xbean-spring.version>
         <mockito.version>1.9.5</mockito.version>
-        <jolokia.version>1.2.3</jolokia.version>
-        <spring-boot.version>1.1.9.RELEASE</spring-boot.version>
+        <jolokia.version>1.3.1</jolokia.version>
+        <spring-boot.version>1.2.5.RELEASE</spring-boot.version>
+        <camel-tinkerforge.version>2.15-SNAPSHOT</camel-tinkerforge.version>
     </properties>
 
     <repositories>
@@ -159,7 +160,7 @@
         <dependency>
             <groupId>org.atomspace.camel</groupId>
             <artifactId>camel-tinkerforge</artifactId>
-            <version>${camel.version}</version>
+            <version>${camel-tinkerforge.version}</version>
         </dependency>
     
         <!-- ACTIVEMQ -->
