@@ -57,12 +57,12 @@ public class Application {
     }
 
 //    NOT WORKING JET, its SNAPSHOT
-//    @Bean
-//    public CamelContextConfiguration contextConfiguration() {
-//        return (CamelContext camelContext) -> { 
-//            ((DefaultCamelContext)camelContext).setName("camel-ultrahouse3000");
-//        };
-//    }
+    @Bean
+    public CamelContextConfiguration contextConfiguration() {
+        return (CamelContext camelContext) -> { 
+            ((DefaultCamelContext)camelContext).setName("camel-ultrahouse3000");
+        };
+    }
 
     
     @Bean

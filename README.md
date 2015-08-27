@@ -14,6 +14,14 @@ Routes
 ![HW3](https://raw.github.com/eddi888/ultrahouse3000/master/src/site/resources/camel-overview.jpg)
 
 
+
+Hawtio
+------
+
+![HW3](https://raw.github.com/eddi888/ultrahouse3000/master/src/site/resources/hawtio-motiondetector.png)
+
+
+
 Hardware
 ========
 
